@@ -10,7 +10,7 @@
 
 ### 🏠 Home Page — StackMind AI Chatbot
 
-<img src="./Frontend/src/assets/screenshot-home.png" alt="StackMind Home Page" width="90%" />
+<img src="./Frontend/src/assets/Screenshot-home.png" alt="StackMind Home Page" width="90%" />
 
 --- 
 ## 📚 Table of Contents
