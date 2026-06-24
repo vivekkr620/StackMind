@@ -835,7 +835,7 @@ Have questions? Issues? Feature requests?
 
 1. **GitHub Issues**: Open an issue for bugs
 2. **Discussions**: Ask questions in GitHub Discussions
-3. **Email**: Reach out directly to vivek.kumar@email.com
+3. **Email**: Reach out directly to vk431152@gmail.com
 
 ---
 
