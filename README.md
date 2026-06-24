@@ -687,7 +687,7 @@ router.post("/chat", async (req, res) => {
 
 ## 🚀 Future Roadmap
 
-### Phase 1: Security & User Experience (Q1 2025)
+### Phase 1: Security & User Experience 
   - JWT Authentication: Secure user login & registration
   - OAuth Integration: Sign up with Google/GitHub
   - Voice Input: OpenAI Whisper API for speech-to-text
@@ -822,9 +822,6 @@ Full-Stack Developer | MERN Stack & AI Integrations
 
 ### Q: How do I handle rate limits from Gemini API?
 **A**: Phase 2 includes a multi-LLM router that automatically switches to fallback models when rate limits are hit.
-
-### Q: Can I use StackMind offline?
-**A**: Currently requires internet for API calls. Offline support with local LLMs is planned for Q4 2025.
 
 ---
 
