@@ -101,9 +101,8 @@ const interval = setInterval(() => {
 ### 5. **Multi-LLM Support Ready**
 Currently supports:
 - **Google Gemini 2.5 Flash** (primary)
-- **OpenAI GPT-4o-mini** (fallback available)
 - **Extensible for**: Claude API, Grok, LLaMA, custom models
-
+- 
 ---
 
 ## 🏗️ Architecture Overview
