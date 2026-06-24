@@ -1,0 +1,74 @@
+.chats {
+    max-width: 700px;
+    overflow-y: scroll;
+    padding: 8rem;
+    scrollbar-width: thin; 
+    scrollbar-color: #4a4a4a transparent;
+}
+
+/* .chats {
+    max-width: 700px;
+    padding: 8rem;
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: #4a4a4a transparent;
+} */
+
+/* Chrome, Edge, Safari */
+.chats::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chats::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chats::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 20px;
+}
+
+.chats::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+.userDiv {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.9rem;
+}
+
+/* gptDiv */
+.stackMindDiv {
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.userMessage {
+    background: #2f2f2f;
+    padding: 10px 20px;
+    border-radius: 14px;
+    max-width: 500px;
+    margin-left: 15rem;
+    width: fit-content;
+
+}
+
+/* gptMessage */
+.stackMindDiv {
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.hljs {
+    border-radius: 14px !important;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+code {
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+}

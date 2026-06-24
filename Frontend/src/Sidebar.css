@@ -1,0 +1,96 @@
+.sidebar {
+    /* background-color: #171717; */ 
+    
+    color: #333333; 
+    height: 100vh;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    border-right: solid 0.25px rgba(0, 0, 0, 0.1); 
+}
+
+button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 14px;
+    background-color: transparent;
+    border: solid 1px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+}
+
+.logo {
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+button span {
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.05); 
+}
+
+/* Yeh main fix hai scroll aur overlap ke liye */
+.history {
+    margin: 10px;
+    padding: 10px;
+    flex: 1; 
+    overflow-y: auto; 
+}
+
+/* Optional: Scrollbar ko thoda clean dikhane ke liye */
+.history::-webkit-scrollbar {
+    width: 6px;
+}
+.history::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.history li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 8px 10px; 
+    font-size: 14px;
+    position: relative;
+}
+
+.history li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.sign {
+    padding: 15px 10px;
+    margin: 0 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: solid 0.25px rgba(0, 0, 0, 0.1); 
+}
+
+.fa-trash {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+}
+
+.history li:hover .fa-trash{
+    opacity: 1;
+    color: #fff;
+}
+
+.fa-trash:hover {
+    color: #f87171 !important;
+}
+
+/* .highlighted {
+    background-color: rgba(180, 180, 180, 0.05);
+    border-radius: 10px;
+} */
