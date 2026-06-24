@@ -690,16 +690,15 @@ router.post("/chat", async (req, res) => {
 ### Phase 1: Security & User Experience (Q1 2025)
   - JWT Authentication: Secure user login & registration
   - OAuth Integration: Sign up with Google/GitHub
-  - Rate Limiting: Prevent API abuse with rate limiters
   - Voice Input: OpenAI Whisper API for speech-to-text
   - Dark/Light Theme: Toggle theme switcher
   - Mobile Responsive: Full mobile UI optimization
   - Search Threads: Full-text search in chat history
+  - Rate Limiting: Prevent API abuse with rate limiters
   - Archive Chats: Archive old conversations
 
 ### Phase 2: Scalability & DevOps 
   - Docker Containerization: Dockerfile for backend & frontend
-  - Docker Compose: Multi-container local development
   - GitHub Actions CI/CD: Automated testing & deployment
   - Kubernetes Deployment: K8s manifests for production
   - Redis Caching: Cache frequently accessed data
