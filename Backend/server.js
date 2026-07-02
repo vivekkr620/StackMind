@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import chatRoutes from "./routes/chat.js";
+import authRoutes from './routes/auth.js';
 
 dotenv.config();
 
@@ -14,6 +15,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api", chatRoutes);
+
+// API Routes register karein
+app.use('/api/auth', authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server Running on ${PORT}`);
