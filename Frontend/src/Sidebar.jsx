@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useCallback } from "react";
 import { MyContext } from "./MyContext.jsx";
 import { v1 as uuidv1 } from "uuid";
 
@@ -13,11 +13,24 @@ function Sidebar() {
     setReply,
     setCurrThreadId,
     setPrevChats,
+    token,
+    setShowAuthModal,
+    setAuthMode,
   } = useContext(MyContext);
 
-  const getAllThreads = async () => {
+  const getAllThreads = useCallback(async () => {
+    if (!token) {
+      setAuthMode("Login");
+      setShowAuthModal(true);
+      return;
+    }
+
     try {
-      const response = await fetch("http://localhost:8080/api/thread");
+      const response = await fetch("http://localhost:8080/api/thread", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const res = await response.json();
 
       const filteredData = res.map((thread) => ({
@@ -29,12 +42,12 @@ function Sidebar() {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [token, setAuthMode, setShowAuthModal, setAllThreads]);
 
   useEffect(() => {
     // console.log("Current Thread:", currThreadId);
     getAllThreads();
-  }, [currThreadId]);
+  }, [currThreadId, getAllThreads]);
 
   const createNewChat = () => {
     setNewChat(true);
@@ -48,10 +61,21 @@ function Sidebar() {
   const changeThread = async (newThreadId) => {
     setCurrThreadId(newThreadId); // setCurrThreadId is replace with newThreadId
 
+    if (!token) {
+      setAuthMode("Login");
+      setShowAuthModal(true);
+      return;
+    }
+
     //load all old chats with is particular threadId (newThreadId)
     try {
       const response = await fetch(
         `http://localhost:8080/api/thread/${newThreadId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       const res = await response.json();
       console.log(res);
@@ -66,10 +90,21 @@ function Sidebar() {
   };
 
   const deleteThread = async (threadId) => {
+    if (!token) {
+      setAuthMode("Login");
+      setShowAuthModal(true);
+      return;
+    }
+
     try {
       const response = await fetch(
         `http://localhost:8080/api/thread/${threadId}`,
-        { method: "DELETE" },
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       const res = await response.json();
       console.log(res);

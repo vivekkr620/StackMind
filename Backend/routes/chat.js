@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/test", async(req, res)=>{
     try {
         const thread = new Thread({
+            userId: req.user.userId,
             threadId: "ABC",
             title: "Testing New Route 2"
         });
@@ -24,7 +25,7 @@ router.post("/test", async(req, res)=>{
 // TO GET ALL THREADS
 router.get("/thread", async(req, res) => { 
     try {
-        const threads = await Thread.find({}).sort(({updatedAt: -1})); // all thread comes
+        const threads = await Thread.find({ userId: req.user.userId }).sort(({updatedAt: -1})); // all thread comes
         // Descending order of updatedAT // most recent data on top
         res.json(threads);
 
@@ -39,10 +40,10 @@ router.get("/thread/:threadId", async (req, res) => {
     const {threadId} = req.params; 
 
     try {
-        const thread = await Thread.findOne({threadId});
+        const thread = await Thread.findOne({threadId, userId: req.user.userId});
 
         if(!thread) {
-            res.status(404).json({error: "Thread not found"});
+            return res.status(404).json({error: "Thread not found"});
         }
 
         res.json(thread.messages);
@@ -58,10 +59,10 @@ router.delete("/thread/:threadId", async (req, res) => {
     const {threadId} = req.params;
 
     try {
-        const deletedThread = await Thread.findOneAndDelete({threadId})
+        const deletedThread = await Thread.findOneAndDelete({threadId, userId: req.user.userId})
 
         if(!deletedThread) {
-            res.status(404).json({error: "Chat not found"})
+            return res.status(404).json({error: "Chat not found"})
         }
 
         res.status(200).json({success: "Chat deleted successfully"})
@@ -77,7 +78,7 @@ router.post("/chat", async (req, res) => {
 
     // validate threadId
     if(!threadId || !message) {
-        res.status(400).json({
+        return res.status(400).json({
             error: "Missing required fields"
         })
     }
@@ -86,10 +87,15 @@ router.post("/chat", async (req, res) => {
         // find threadId
         let thread = await Thread.findOne({ threadId });
 
+        if (thread && String(thread.userId) !== String(req.user.userId)) {
+            return res.status(403).json({ error: "You are not allowed to access this chat" });
+        }
+
         // create new thread if not found
         if(!thread) {
             
             thread = new Thread({
+                userId: req.user.userId,
                 threadId,
                 title: message,
                 messages: [

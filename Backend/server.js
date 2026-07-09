@@ -15,17 +15,16 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cors());
 
-app.use("/api", authMiddleware, chatRoutes);
-
 // API Routes register  
 app.use('/api/auth', authRoutes);
+
+app.use("/api", authMiddleware, chatRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server Running on ${PORT}`);
   connectDB();
 });
 
-// connection establish
 const connectDB = async() => {
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URL);
