@@ -71,7 +71,8 @@ function Sidebar() {
     //load all old chats with is particular threadId (newThreadId)
     try {
       const response = await fetch(
-        `http://localhost:8080/api/thread/${newThreadId}`,
+        // `http://localhost:8080/api/thread/${newThreadId}`,
+        `https://stackmind-4yin.onrender.com/api/thread/${newThreadId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -99,7 +100,8 @@ function Sidebar() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/thread/${threadId}`,
+        // `http://localhost:8080/api/thread/${threadId}`,
+        `https://stackmind-4yin.onrender.com/api/thread/${threadId}`,
         {
           method: "DELETE",
           headers: {
