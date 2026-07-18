@@ -26,7 +26,8 @@ function Sidebar() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/thread", {
+      // const response = await fetch("http://localhost:8080/api/thread", {
+      const response = await fetch("https://stackmind-4yin.onrender.com/api/thread", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
