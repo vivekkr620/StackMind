@@ -58,8 +58,11 @@ function ChatWindow() {
     try {
       // ensure our backend is run, then response will come
       // const response = await fetch("http://localhost:8080/api/chat", options);
-      const response = await fetch("https://stackmind-4yin.onrender.com/api/chat", options);
-      const res = await response.json(); 
+      const response = await fetch(
+        "https://stackmind-4yin.onrender.com/api/chat",
+        options,
+      );
+      const res = await response.json();
       console.log(res);
       setReply(res.reply);
     } catch (err) {
@@ -72,25 +75,24 @@ function ChatWindow() {
   useEffect(() => {
     if (promptRef.current && reply) {
       setPrevChats((prevChats) => [
-        ...prevChats, {
+        ...prevChats,
+        {
           role: "user",
           content: promptRef.current,
-        },{
+        },
+        {
           role: "assistant",
           content: reply,
         },
-
       ]);
-      
     }
- 
-    setPrompt("");
-  }, [reply, setPrevChats, setPrompt]); 
 
+    setPrompt("");
+  }, [reply, setPrevChats, setPrompt]);
 
   const handleProfileClick = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
   const handleLoginClick = () => {
     setAuthMode("Login");
@@ -109,8 +111,6 @@ function ChatWindow() {
     setIsOpen(false);
   };
 
-
-
   return (
     <div className="chatWindow">
       {/* 1st component */}
@@ -126,30 +126,46 @@ function ChatWindow() {
             <i className="fa-solid fa-user"></i>{" "}
           </span>
         </div>
-
       </div>
 
       {/* DropDown */}
-      {
-        isOpen && 
+      {isOpen && (
         <div className="dropDown">
-          <div className="dropDownItem"> <i className="fa-solid fa-gear"></i> Settings </div>
-          <div className="dropDownItem"> <i className="fa-solid fa-cloud-arrow-up"></i> Upgrade Plan</div>
+          <div className="dropDownItem">
+            {" "}
+            <i className="fa-solid fa-gear"></i> Settings{" "}
+          </div>
+          <div className="dropDownItem">
+            {" "}
+            <i className="fa-solid fa-cloud-arrow-up"></i> Upgrade Plan
+          </div>
           {user ? (
-            <div className="dropDownItem" onClick={handleLogoutClick}> <i className="fa-solid fa-right-from-bracket"></i> Log out</div>
+            <div className="dropDownItem" onClick={handleLogoutClick}>
+              {" "}
+              <i className="fa-solid fa-right-from-bracket"></i> Log out
+            </div>
           ) : (
             <>
-              <div className="dropDownItem" onClick={handleLoginClick}> <i className="fa-solid fa-right-to-bracket"></i> Log in</div>
-              <div className="dropDownItem" onClick={handleSignUpClick}> <i className="fa-solid fa-user-plus"></i> Sign Up</div>
+              <div className="dropDownItem" onClick={handleLoginClick}>
+                {" "}
+                <i className="fa-solid fa-right-to-bracket"></i> Log in
+              </div>
+              <div className="dropDownItem" onClick={handleSignUpClick}>
+                {" "}
+                <i className="fa-solid fa-user-plus"></i> Sign Up
+              </div>
             </>
           )}
         </div>
-      }
+      )}
 
       {/* 2nd - chat component -> it is a individual component */}
       <Chat></Chat>
 
-      <ScaleLoader color="#fff" loading={loading}></ScaleLoader>
+      {/* <ScaleLoader color="#fff" loading={loading}></ScaleLoader> */}
+      <div className="loaderWrapper">
+        <ScaleLoader color="#339cff" loading={loading}></ScaleLoader>
+      </div>
 
       {/* 3rd component */}
       <div className="chatInput">
