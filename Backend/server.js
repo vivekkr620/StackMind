@@ -9,7 +9,8 @@ import authMiddleware from "./middleware/authMiddleware.js";
 dotenv.config();
 
 const app = express();
-const PORT = 8080;
+// const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 /* PARSE incoming Request */
 app.use(express.json());

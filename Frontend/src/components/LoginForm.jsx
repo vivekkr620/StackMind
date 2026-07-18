@@ -1,9 +1,10 @@
-import { useEffect, useState, useContext } from 'react';
-import { MyContext } from '../MyContext.jsx'; 
+import { useEffect, useState, useContext } from "react";
+import { MyContext } from "../MyContext.jsx";
 
 const LoginForm = () => {
   // Yahan currState ki jagah hum context wala authMode use kar rahe hain
-  const { loginUser, setShowAuthModal, authMode, setAuthMode } = useContext(MyContext); 
+  const { loginUser, setShowAuthModal, authMode, setAuthMode } =
+    useContext(MyContext);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,12 +20,18 @@ const LoginForm = () => {
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
-    const url = authMode === "Login" 
-      ? "http://localhost:8080/api/auth/login" 
-      : "http://localhost:8080/api/auth/signup";
+    e.preventDefault();
+    // const url = authMode === "Login"
+    //   ? "http://localhost:8080/api/auth/login"
+    //   : "http://localhost:8080/api/auth/signup";
 
-    const bodyData = authMode === "Login" ? { email, password } : { name, email, password };
+    const url =
+      authMode === "Login"
+        ? "https://stackmind-4yin.onrender.com/api/auth/login"
+        : "https://stackmind-4yin.onrender.com/api/auth/signup";
+
+    const bodyData =
+      authMode === "Login" ? { email, password } : { name, email, password };
 
     try {
       const response = await fetch(url, {
@@ -48,10 +55,18 @@ const LoginForm = () => {
   return (
     <div className="modal-overlay">
       <div className="modal-box">
-        <button type="button" onClick={() => setShowAuthModal(false)} className="close-btn">✕</button>
+        <button
+          type="button"
+          onClick={() => setShowAuthModal(false)}
+          className="close-btn"
+        >
+          ✕
+        </button>
 
-        <h2 className="auth-title">{authMode === "Login" ? "Log In" : "Sign Up"}</h2>
-        
+        <h2 className="auth-title">
+          {authMode === "Login" ? "Log In" : "Sign Up"}
+        </h2>
+
         <form onSubmit={handleSubmit} className="auth-form" noValidate>
           {authMode === "Sign Up" && (
             <input
@@ -64,7 +79,7 @@ const LoginForm = () => {
               className="auth-input"
             />
           )}
-          
+
           <input
             type="email"
             placeholder="Enter your email"
@@ -74,17 +89,19 @@ const LoginForm = () => {
             required
             className="auth-input"
           />
-          
+
           <input
             type="password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            autoComplete={authMode === "Login" ? "current-password" : "new-password"}
+            autoComplete={
+              authMode === "Login" ? "current-password" : "new-password"
+            }
             required
             className="auth-input"
           />
-          
+
           <button type="submit" className="auth-btn">
             {authMode === "Login" ? "Log In" : "Create Account"}
           </button>
@@ -92,9 +109,22 @@ const LoginForm = () => {
 
         <div className="auth-footer">
           {authMode === "Login" ? (
-            <p>Don't have an account? <span className="auth-link" onClick={() => setAuthMode("Sign Up")}>Sign Up</span></p>
+            <p>
+              Don't have an account?{" "}
+              <span
+                className="auth-link"
+                onClick={() => setAuthMode("Sign Up")}
+              >
+                Sign Up
+              </span>
+            </p>
           ) : (
-            <p>Already have an account? <span className="auth-link" onClick={() => setAuthMode("Login")}>Log In</span></p>
+            <p>
+              Already have an account?{" "}
+              <span className="auth-link" onClick={() => setAuthMode("Login")}>
+                Log In
+              </span>
+            </p>
           )}
         </div>
       </div>
