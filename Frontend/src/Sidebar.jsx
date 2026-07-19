@@ -128,6 +128,9 @@ function Sidebar() {
 
   return (
     <section className="sidebar">
+
+      <input type="checkbox" id="sidebarToggle" className="sidebarToggle" />
+
       {/* new chat button */}
       <button onClick={createNewChat}>
         <img src="src/assets/SM-logo.png" alt="gpt logo" className="logo" />

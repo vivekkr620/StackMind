@@ -18,6 +18,17 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+
+.menuToggle {
+    display: none;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 1rem;
+}
+
 .navbar span {
     margin: 1rem 2rem;
     font-size: 15px;
@@ -163,4 +174,49 @@ input::placeholder {
 
 .dropDownItem:hover {
     background-color: rgba(255, 255, 255, 0.06);
+}
+
+.dropDownOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: transparent;
+}
+
+.dropDown {
+    z-index: 10000;
+}
+
+
+@media (max-width: 768px) {
+    .menuToggle {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 18px;
+        color: #ececec;
+        margin-left: 1rem;
+    }
+
+    .navbar span {
+        margin: 1rem;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .sidebarBackdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(3px);
+        z-index: 999;
+    }
+
+    body:has(.sidebarToggle:checked) .sidebarBackdrop {
+        display: block;
+    }
 }

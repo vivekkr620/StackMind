@@ -10,6 +10,10 @@
     border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.sidebarToggle {
+    display: none;
+}
+
 .sidebar button {
     display: flex;
     justify-content: space-between;
@@ -109,4 +113,22 @@
     color: #7a7a7a;
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar:has(.sidebarToggle:checked) {
+        transform: translateX(0);
+    }
 }

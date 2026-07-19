@@ -113,8 +113,14 @@ function ChatWindow() {
 
   return (
     <div className="chatWindow">
+      <label htmlFor="sidebarToggle" className="sidebarBackdrop"></label>
+
       {/* 1st component */}
       <div className="navbar">
+        <label htmlFor="sidebarToggle" className="menuToggle">
+          <i className="fa-solid fa-bars"></i>
+        </label>
+
         <span>
           Stack Mind <i className="fa-solid fa-chevron-down"></i>
         </span>
@@ -130,33 +136,39 @@ function ChatWindow() {
 
       {/* DropDown */}
       {isOpen && (
-        <div className="dropDown">
-          <div className="dropDownItem">
-            {" "}
-            <i className="fa-solid fa-gear"></i> Settings{" "}
-          </div>
-          <div className="dropDownItem">
-            {" "}
-            <i className="fa-solid fa-cloud-arrow-up"></i> Upgrade Plan
-          </div>
-          {user ? (
-            <div className="dropDownItem" onClick={handleLogoutClick}>
+        <>
+          <div
+            className="dropDownOverlay"
+            onClick={() => setIsOpen(false)}
+          ></div>
+          <div className="dropDown">
+            <div className="dropDownItem">
               {" "}
-              <i className="fa-solid fa-right-from-bracket"></i> Log out
+              <i className="fa-solid fa-gear"></i> Settings{" "}
             </div>
-          ) : (
-            <>
-              <div className="dropDownItem" onClick={handleLoginClick}>
+            <div className="dropDownItem">
+              {" "}
+              <i className="fa-solid fa-cloud-arrow-up"></i> Upgrade Plan
+            </div>
+            {user ? (
+              <div className="dropDownItem" onClick={handleLogoutClick}>
                 {" "}
-                <i className="fa-solid fa-right-to-bracket"></i> Log in
+                <i className="fa-solid fa-right-from-bracket"></i> Log out
               </div>
-              <div className="dropDownItem" onClick={handleSignUpClick}>
-                {" "}
-                <i className="fa-solid fa-user-plus"></i> Sign Up
-              </div>
-            </>
-          )}
-        </div>
+            ) : (
+              <>
+                <div className="dropDownItem" onClick={handleLoginClick}>
+                  {" "}
+                  <i className="fa-solid fa-right-to-bracket"></i> Log in
+                </div>
+                <div className="dropDownItem" onClick={handleSignUpClick}>
+                  {" "}
+                  <i className="fa-solid fa-user-plus"></i> Sign Up
+                </div>
+              </>
+            )}
+          </div>
+        </>
       )}
 
       {/* 2nd - chat component -> it is a individual component */}
