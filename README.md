@@ -13,6 +13,8 @@ A production-grade, thread-based conversational AI chatbot built from scratch wi
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
+### 🔗 [**Live Demo →**](https://stack-mind-dusky.vercel.app/)
+
 </div>
 
 ---
