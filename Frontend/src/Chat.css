@@ -1,9 +1,11 @@
 .chats {
+    flex: 1;
+    min-height: 0;
     width: 100%;
     max-width: 768px;
     margin: 0 auto;
-    overflow-y: scroll;
-    padding: 2rem 1.5rem 8rem;
+    overflow-y: auto;
+    padding: 2rem 1.5rem 2rem;
     scrollbar-width: thin;
     scrollbar-color: #4a4a4a transparent;
 }

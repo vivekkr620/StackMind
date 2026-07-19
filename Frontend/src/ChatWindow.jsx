@@ -172,7 +172,9 @@ function ChatWindow() {
       )}
 
       {/* 2nd - chat component -> it is a individual component */}
-      <Chat></Chat>
+      <div className="mainContent">
+        <Chat></Chat>
+      </div>
 
       {/* <ScaleLoader color="#fff" loading={loading}></ScaleLoader> */}
       <div className="loaderWrapper">
